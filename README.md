@@ -3,8 +3,10 @@
 This package is a [Symfony](http://symfony.com) allowing you to use a particular **FormType** (NeoPageBuilderType) in order to build ***complete frontend pages*** in the context of a CMS.
 
 [![Package version](https://img.shields.io/packagist/v/frgef/neo-page-builder-bundle.svg?style=flat-square)](https://packagist.org/packages/frgef/neo-page-builder-bundle)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Slack](https://img.shields.io/badge/slack-%23neo--page--builder-gold.svg?style=flat-square)](https://join.slack.com/t/sensioxenolab/shared_invite/zt-2j1r521bb-njCE7vP1vT9Ujcwfguyw4w)
 
-## When to use this bundle?
+## When to use this bundle ?
 
 ## Documentation
 
@@ -46,11 +48,3 @@ Next chapter: [Advanced usage](doc/advanced-usage.md)
 
 ## Resources
 
-## Credits
-
-This bundle was originally developed and maintained by [Frédéric GEFFRAY](https://github.com/Fred-QS).
-
-
-## License
-
-[![license](https://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](LICENSE)
