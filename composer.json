@@ -41,12 +41,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Frgef\\NeoPageBuilder": "src/"
+      "Frgef\\NeoPageBuilder\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Frgef\\NeoPageBuilder\\Tests": "tests/"
+      "Frgef\\NeoPageBuilder\\Tests\\": "tests/"
     }
   }
 }
