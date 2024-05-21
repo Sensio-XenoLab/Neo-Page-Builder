@@ -17,6 +17,24 @@ This package is a [Symfony](http://symfony.com) allowing you to use a particular
 
 With [Symfony Flex](https://symfony.com/doc/current/setup/flex.html) (recommended):
 
+```
+composer require frgef/neo-page-builder-bundle
+```
+
+You're ready to use AliceBundle, and can jump to the next section!
+
+Without Flex you will have to register the bundle accordingly in `config/bundles.php`:
+
+```php
+<?php
+
+return [
+    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
+    // ...
+    NeoPageBuilder\NeoPageBuilderBundle::class => ['all' => true],
+];
+```
+
 Configure the bundle to your needs, for example:
 
 ## Basic usage
