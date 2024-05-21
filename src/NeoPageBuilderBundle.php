@@ -7,5 +7,5 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class NeoPageBuilderBundle extends AbstractBundle
 {
-
+    // Toto
 }
