@@ -7,5 +7,17 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 class NeoPageBuilderBundle extends AbstractBundle
 {
-    // Toto
+    public function configure(DefinitionConfigurator $definition): void
+    {
+        $definition->import('../config/definition.php');
+        // you can also use glob patterns
+        //$definition->import('../config/definition/*.php');
+        dump('toto');
+    }
+
+    public function getPath(): string
+    {
+        dump('toto');
+        return __DIR__;
+    }
 }
