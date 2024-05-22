@@ -3,21 +3,12 @@
 namespace Frgef\NeoPageBuilder;
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class NeoPageBuilderBundle extends AbstractBundle
+class NeoPageBuilderBundle extends Bundle
 {
-    public function configure(DefinitionConfigurator $definition): void
-    {
-        $definition->import('../config/definition.php');
-        // you can also use glob patterns
-        //$definition->import('../config/definition/*.php');
-        dump('toto');
-    }
-
     public function getPath(): string
     {
-        dump('toto');
-        return __DIR__;
+        return \dirname(__DIR__);
     }
 }

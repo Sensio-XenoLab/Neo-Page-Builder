@@ -1,6 +1,6 @@
 <div id="npb-wrapper" {{ stimulus_controller('builder_page') }}>
     <div id="npb-header">
-        {% include 'builder/components/headband-master.html.twig' %}
+        {% include '@!NeoPageBuilder/components/headband-master.html.twig' %}
     </div>
     <div id="npb-initial-add-row-btn">
         <button id="npb-add-row-{{ get_timestamp() }}" type="button" class="npb-add-row" data-title="{{ 'create.new.row'|trans }}">

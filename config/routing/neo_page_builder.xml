@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing https://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="_npb_page" path="/page" methods="POST">
+        <default key="_controller">frgef_neo_page_builder.builder_controller::page</default>
+    </route>
+    <route id="_npb_row" path="/row" methods="POST">
+        <default key="_controller">frgef_neo_page_builder.builder_controller::row</default>
+    </route>
+    <route id="_npb_section" path="/section" methods="POST">
+        <default key="_controller">frgef_neo_page_builder.builder_controller::section</default>
+    </route>
+    <route id="_npb_block" path="/block" methods="POST">
+        <default key="_controller">frgef_neo_page_builder.builder_controller::block</default>
+    </route>
+    <route id="_npb_fixed_modal" path="/fixed-modal" methods="POST">
+        <default key="_controller">frgef_neo_page_builder.builder_controller::fixedModal</default>
+    </route>
+    <route id="_npb_resizable_modal" path="/resizable-modal" methods="POST">
+        <default key="_controller">frgef_neo_page_builder.builder_controller::resizableModal</default>
+    </route>
+    <route id="_npb_header_modal" path="/header-fixed-modal" methods="POST">
+        <default key="_controller">frgef_neo_page_builder.builder_controller::headerModal</default>
+    </route>
+</routes>

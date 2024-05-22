@@ -1,7 +1,7 @@
 {% set timestamp = get_timestamp() %}
 <div id="npb-section-{{ timestamp }}" data-uuid="{{ timestamp }}" data-complexity="{{ complexity }}" data-pattern="{{ rowType }}" class="npb-section npb-section-{{ type }}" {{ stimulus_controller('builder_section') }}>
     {% set headbandType = 'section' %}
-    {% include 'builder/components/headband.html.twig' %}
+    {% include '@!NeoPageBuilder/components/headband.html.twig' %}
     {% for size in pattern %}
         {% set width = size %}
         <div class="npb-blocks-wrapper" style="width: {{ width }}%;">

@@ -8,7 +8,7 @@
                 {% set icons = 'page' == info.elementType ? ['fullscreen', 'sidebar'] : ['fullscreen', 'sidebar', 'details'] %}
                 {% for icon in icons %}
                     <div id="npb-resizable-modal-header-icon-{{ icon }}" class="npb-resizable-modal-header-icon" data-title="{{ ('modal_header.' ~ icon)|trans }}">
-                        {% include 'builder/components/icons/resizable/' ~ icon ~ '.html.twig' %}
+                        {% include '@!NeoPageBuilder/components/icons/resizable/' ~ icon ~ '.html.twig' %}
                     </div>
                 {% endfor %}
             </div>
@@ -21,12 +21,12 @@
             {% for footer_icon in footer_icons %}
                 <div id="npb-resizable-modal-footer-icon-{{ footer_icon }}" class="npb-resizable-modal-footer-icon" data-title="{{ ('modal_footer.' ~ footer_icon)|trans }}">
                     <span></span>
-                    {% include 'builder/components/icons/resizable/' ~ footer_icon ~ '.html.twig' %}
+                    {% include '@!NeoPageBuilder/components/icons/resizable/' ~ footer_icon ~ '.html.twig' %}
                 </div>
             {% endfor %}
         </div>
         <div id="npb-resizable-modal-resizer">
-            {% include 'builder/components/icons/resizable/resize.html.twig' %}
+            {% include '@!NeoPageBuilder/components/icons/resizable/resize.html.twig' %}
         </div>
     </div>
 </div>

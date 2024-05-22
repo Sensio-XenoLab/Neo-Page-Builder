@@ -3,7 +3,7 @@
     {% set timestamp = get_timestamp() %}
     <div id="npb-row-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ rowType }}" class="npb-row npb-row-section-draggable npb-new-row npb-row-{{ type }}" {{ stimulus_controller('builder_row') }}>
         {% set headbandType = 'row' %}
-        {% include 'builder/components/headband.html.twig' %}
+        {% include '@!NeoPageBuilder/components/headband.html.twig' %}
         <div class="npb-initial-add-section-btn">
             <button id="npb-add-section-{{ get_timestamp() }}" type="button" class="npb-add-section" data-title="{{ 'create.new.section'|trans }}">
                 <span class="npb-button-bg"></span>
@@ -22,7 +22,7 @@
     {% set timestamp = get_timestamp() %}
     <div id="npb-row-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ rowType }}" class="npb-row npb-row-{{ type }}" {{ stimulus_controller('builder_row') }}>
         {% set headbandType = 'row' %}
-        {% include 'builder/components/headband.html.twig' %}
+        {% include '@!NeoPageBuilder/components/headband.html.twig' %}
         {% set width = 100 %}
         <div class="npb-blocks-wrapper" style="width: {{ width }}%;">
             <div id="npb-blocks-draggable-container-{{ timestamp }}" class="npb-blocks-draggable-container"></div>
@@ -42,7 +42,7 @@
     {% set row_timestamp = get_timestamp() %}
     <div id="npb-row-{{ row_timestamp }}" data-uuid="{{ row_timestamp }}" data-pattern="{{ rowPattern }}" class="npb-row npb-new-row npb-row-{{ type }}" {{ stimulus_controller('builder_row') }}>
         {% set headbandType = 'row' %}
-        {% include 'builder/components/headband.html.twig' %}
+        {% include '@!NeoPageBuilder/components/headband.html.twig' %}
         {% for item in pattern %}
             {% set timestamp = get_timestamp() %}
             {% if item.type == 'section' %}
