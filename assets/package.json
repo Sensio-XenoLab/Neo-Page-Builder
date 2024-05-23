@@ -1,0 +1,37 @@
+{
+  "name": "@frgef/neo-page-builder-bundle",
+  "version": "1.0.0",
+  "symfony": {
+    "controllers": {
+      "frgef_neo_page_builder_block": {
+        "main": "controllers/frgef_neo_page_builder_block_controller.js",
+        "fetch": "eager",
+        "enabled": true
+      },
+      "frgef_neo_page_builder_page": {
+        "main": "controllers/frgef_neo_page_builder_page_controller.js",
+        "fetch": "eager",
+        "enabled": true
+      },
+      "frgef_neo_page_builder_row": {
+        "main": "controllers/frgef_neo_page_builder_row_controller.js",
+        "fetch": "eager",
+        "enabled": true
+      },
+      "frgef_neo_page_builder_section": {
+        "main": "controllers/frgef_neo_page_builder_section_controller.js",
+        "fetch": "eager",
+        "enabled": true
+      }
+    },
+    "importmap": {
+      "@hotwired/stimulus": "^3.0.0",
+      "slugify": "^1.6.5",
+      "@frgef/neo-page-builder": "path:%PACKAGE%/js/logic.js"
+    }
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0",
+    "slugify": "^1.6.5"
+  }
+}
