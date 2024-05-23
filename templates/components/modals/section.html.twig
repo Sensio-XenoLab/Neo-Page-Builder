@@ -3,18 +3,18 @@
         <div class="npb-fixed-modal-header">
             <p class="npb-fixed-modal-title">{{ 'insert.section'|trans }}</p>
             <div class="npb-fixed-modal-close-wrapper">
-                {% include 'builder/components/icons/headband/close.html.twig' %}
+                {% include '@!NeoPageBuilder/components/icons/headband/close.html.twig' %}
             </div>
         </div>
         <div class="npb-fixed-modal-choices-container{% if isSpecial == true %} npb-fixed-modal-choices-container-special{% endif %}">
             {% if isSpecial == false %}
                 {% for pattern in 'a'..'t' %}
-                    {% include 'builder/components/modals/choices/sections/pattern-' ~ pattern ~'.html.twig' %}
+                    {% include '@!NeoPageBuilder/components/modals/choices/sections/pattern-' ~ pattern ~'.html.twig' %}
                 {% endfor %}
             {% else %}
-                {% include 'builder/components/modals/choices/sections/pattern-a.html.twig' %}
-                {% include 'builder/components/modals/choices/sections/pattern-b.html.twig' %}
-                {% include 'builder/components/modals/choices/sections/pattern-c.html.twig' %}
+                {% include '@!NeoPageBuilder/components/modals/choices/sections/pattern-a.html.twig' %}
+                {% include '@!NeoPageBuilder/components/modals/choices/sections/pattern-b.html.twig' %}
+                {% include '@!NeoPageBuilder/components/modals/choices/sections/pattern-c.html.twig' %}
             {% endif %}
         </div>
     </div>

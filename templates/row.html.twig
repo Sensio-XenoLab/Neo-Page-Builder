@@ -1,7 +1,7 @@
 {% if type == 'normal' %}
 
     {% set timestamp = get_timestamp() %}
-    <div id="npb-row-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ rowType }}" class="npb-row npb-row-section-draggable npb-new-row npb-row-{{ type }}" {{ stimulus_controller('builder_row') }}>
+    <div id="npb-row-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ rowType }}" class="npb-row npb-row-section-draggable npb-new-row npb-row-{{ type }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_row') }}>
         {% set headbandType = 'row' %}
         {% include '@!NeoPageBuilder/components/headband.html.twig' %}
         <div class="npb-initial-add-section-btn">
@@ -20,7 +20,7 @@
 {% elseif type == 'full' %}
 
     {% set timestamp = get_timestamp() %}
-    <div id="npb-row-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ rowType }}" class="npb-row npb-row-{{ type }}" {{ stimulus_controller('builder_row') }}>
+    <div id="npb-row-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ rowType }}" class="npb-row npb-row-{{ type }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_row') }}>
         {% set headbandType = 'row' %}
         {% include '@!NeoPageBuilder/components/headband.html.twig' %}
         {% set width = 100 %}
@@ -40,7 +40,7 @@
 
 {% elseif type == 'special' %}
     {% set row_timestamp = get_timestamp() %}
-    <div id="npb-row-{{ row_timestamp }}" data-uuid="{{ row_timestamp }}" data-pattern="{{ rowPattern }}" class="npb-row npb-new-row npb-row-{{ type }}" {{ stimulus_controller('builder_row') }}>
+    <div id="npb-row-{{ row_timestamp }}" data-uuid="{{ row_timestamp }}" data-pattern="{{ rowPattern }}" class="npb-row npb-new-row npb-row-{{ type }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_row') }}>
         {% set headbandType = 'row' %}
         {% include '@!NeoPageBuilder/components/headband.html.twig' %}
         {% for item in pattern %}

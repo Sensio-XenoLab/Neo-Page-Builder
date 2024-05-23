@@ -1,5 +1,5 @@
 {% set timestamp = get_timestamp() %}
-<div id="npb-section-{{ timestamp }}" data-uuid="{{ timestamp }}" data-complexity="{{ complexity }}" data-pattern="{{ rowType }}" class="npb-section npb-section-{{ type }}" {{ stimulus_controller('builder_section') }}>
+<div id="npb-section-{{ timestamp }}" data-uuid="{{ timestamp }}" data-complexity="{{ complexity }}" data-pattern="{{ rowType }}" class="npb-section npb-section-{{ type }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_section') }}>
     {% set headbandType = 'section' %}
     {% include '@!NeoPageBuilder/components/headband.html.twig' %}
     {% for size in pattern %}

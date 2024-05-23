@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Twig\Environment;
+use Twig\Environment as TwigEnvironment;
 
 class BuilderController
 {
-    public function __construct(private Environment $twig)
+    public function __construct(private TwigEnvironment $twig)
     {
 
     }
@@ -25,12 +25,7 @@ class BuilderController
     }
 
     /**
-     * Renders the row template with the given iteration and controller name.
-     *
-     * @param Request $request The request object.
-     * @return Response The rendered response.
-     *
-     * @throws NotFoundHttpException If the row iteration is missing in the request parameters.
+     * @throws NotFoundHttpException
      */
     public function row(Request $request): Response
     {
@@ -50,12 +45,7 @@ class BuilderController
     }
 
     /**
-     * Renders the section template with the given iteration and controller name.
-     *
-     * @param Request $request The request object.
-     * @return Response The rendered response.
-     *
-     * @throws NotFoundHttpException If the section iteration is missing in the request parameters.
+     * @throws NotFoundHttpException
      */
     public function section(Request $request): Response
     {
@@ -76,12 +66,7 @@ class BuilderController
     }
 
     /**
-     * Renders the block template with the given iteration and controller name.
-     *
-     * @param Request $request The request object.
-     * @return Response The rendered response.
-     *
-     * @throws NotFoundHttpException If the block iteration is missing in the request parameters.
+     * @throws NotFoundHttpException
      */
     public function block(Request $request): Response
     {
@@ -101,14 +86,8 @@ class BuilderController
         }
     }
 
-
     /**
-     * Renders a fixed modal template based on the provided type.
-     *
-     * @param Request $request The request object.
-     * @return Response The rendered response.
-     *
-     * @throws NotFoundHttpException If the modal choice is missing in the request parameters or is invalid.
+     * @throws NotFoundHttpException
      */
     public function fixedModal(Request $request): Response
     {
@@ -127,6 +106,9 @@ class BuilderController
         }
     }
 
+    /**
+     * @throws NotFoundHttpException
+     */
     public function resizableModal(Request $request): Response
     {
         if ($request->request->has('type')
@@ -145,7 +127,7 @@ class BuilderController
                     compact('info', 'mode')
                 ))
                 : new Response($this->twig->render(
-                    sprintf('components/modals/resizable/types/%s.html.twig', $info['elementType']),
+                    sprintf('@!NeoPageBuilder/components/modals/resizable/types/%s.html.twig', $info['elementType']),
                     compact('type', 'info', 'mode')
                 ));
 

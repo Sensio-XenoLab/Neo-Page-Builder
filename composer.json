@@ -2,7 +2,16 @@
   "name": "frgef/neo-page-builder-bundle",
   "type": "library",
   "description": "This package is a Symfony bundle allowing you to use a particular FormType (NeoPageBuilderType) in order to build complete frontend pages in the context of a CMS.",
-  "keywords": ["page","builder", "symfony", "bundle", "sensiolabs", "form", "type"],
+  "keywords": [
+    "page",
+    "builder",
+    "symfony",
+    "bundle",
+    "sensiolabs",
+    "form",
+    "type",
+    "symfony-ux"
+  ],
   "homepage": "https://github.com/Sensio-XenoLab/Neo-Page-Builder",
   "license": "MIT",
   "authors": [
