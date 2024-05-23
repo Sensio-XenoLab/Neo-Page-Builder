@@ -13,12 +13,13 @@ class NeoPageBuilderBundle extends Bundle
     {
         if ($this->isAssetMapperAvailable($container)) {
 
+            $this->addImportJsFileInAppJs();
             $container->prependExtensionConfig('framework', [
                 'asset_mapper' => [
                     'paths' => [
                         __DIR__ . '/../assets/controllers' => '@frgef/neo-page-builder-bundle',
-                        __DIR__ . '/../assets/css' => '@frgef/neo-page-builder-bundle',
                         __DIR__ . '/../assets/js' => '@frgef/neo-page-builder-bundle',
+                        __DIR__ . '/../assets/css' => '@frgef/neo-page-builder-bundle',
                     ],
                 ],
             ]);
@@ -28,21 +29,6 @@ class NeoPageBuilderBundle extends Bundle
     public function getPath(): string
     {
         return \dirname(__DIR__);
-    }
-
-    public function prependExtension(ContainerConfigurator $configurator, ContainerBuilder $container): void
-    {
-        if (!$this->isAssetMapperAvailable($container)) {
-            return;
-        }
-
-        $container->prependExtensionConfig('framework', [
-            'asset_mapper' => [
-                'paths' => [
-                    __DIR__ . '/../assets/controllers' => '@frgef/neo-page-builder-bundle',
-                ],
-            ],
-        ]);
     }
 
     private function isAssetMapperAvailable(ContainerBuilder $container): bool
@@ -57,5 +43,23 @@ class NeoPageBuilderBundle extends Bundle
         }
 
         return is_file($bundlesMetadata['FrameworkBundle']['path'] . '/Resources/config/asset_mapper.php');
+    }
+
+    private function addImportJsFileInAppJs(): void
+    {
+        $appJsFile = \dirname(__DIR__, 4) . '/assets/app.js';
+        $newLine = "import '@frgef/neo-page-builder';" . "\n";
+        
+        if (file_exists($appJsFile)) {
+            $lines = file($appJsFile);
+            if (!in_array($newLine, $lines)) {
+                array_unshift($lines, "import '@frgef/neo-page-builder';" . "\n");
+                $file = fopen($appJsFile, "w+");
+                foreach($lines as $line){
+                    fwrite($file, $line);
+                }
+                fclose($file);
+            }
+        }
     }
 }
