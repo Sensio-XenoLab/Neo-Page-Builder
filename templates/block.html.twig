@@ -1,5 +1,5 @@
 {% set timestamp = get_timestamp() %}
-<div id="npb-block-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ pattern }}" class="npb-block npb-block-{{ blockType }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_block') }}>
+<div id="frgef--neo-page-builder-block-{{ timestamp }}" data-uuid="{{ timestamp }}" data-pattern="{{ pattern }}" class="frgef--neo-page-builder-block frgef--neo-page-builder-block-{{ blockType }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_block') }}>
     {% set headbandType = 'block' %}
     {% include '@!NeoPageBuilder/components/headband.html.twig' %}
 </div>

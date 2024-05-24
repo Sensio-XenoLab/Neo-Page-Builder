@@ -1,12 +1,12 @@
-<div id="npb-wrapper" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_page') }}>
-    <div id="npb-header">
+<div id="frgef--neo-page-builder-wrapper" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_page') }}>
+    <div id="frgef--neo-page-builder-header">
         {% include '@!NeoPageBuilder/components/headband-master.html.twig' %}
     </div>
-    <div id="npb-initial-add-row-btn">
-        <button id="npb-add-row-{{ get_timestamp() }}" type="button" class="npb-add-row" data-title="{{ 'create.new.row'|trans }}">
-            <span class="npb-button-bg"></span>
-            <span class="npb-button-symbol">+</span>
+    <div id="frgef--neo-page-builder-initial-add-row-btn">
+        <button id="frgef--neo-page-builder-add-row-{{ get_timestamp() }}" type="button" class="frgef--neo-page-builder-add-row" data-title="{{ 'create.new.row'|trans }}">
+            <span class="frgef--neo-page-builder-button-bg"></span>
+            <span class="frgef--neo-page-builder-button-symbol">+</span>
         </button>
     </div>
-    <div id="npb-rows-wrapper"></div>
+    <div id="frgef--neo-page-builder-rows-wrapper"></div>
 </div>

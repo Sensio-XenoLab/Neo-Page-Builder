@@ -1,31 +1,31 @@
-<div id="npb-resizable-modal-container" data-mode="{{ mode }}">
-    <div id="npb-resizable-modal"{% if info.elementType != 'page' %} data-id="{{ info.elementID }}"{% endif %} data-type="{{ info.elementType }}">
-        <div id="npb-resizable-modal-header">
-            <div id="npb-resizable-modal-header-title" class="npb-resizable-modal-header-title-{{ info.elementType }}">
+<div id="frgef--neo-page-builder-resizable-modal-container" data-mode="{{ mode }}">
+    <div id="frgef--neo-page-builder-resizable-modal"{% if info.elementType != 'page' %} data-id="{{ info.elementID }}"{% endif %} data-type="{{ info.elementType }}">
+        <div id="frgef--neo-page-builder-resizable-modal-header">
+            <div id="frgef--neo-page-builder-resizable-modal-header-title" class="frgef--neo-page-builder-resizable-modal-header-title-{{ info.elementType }}">
                 <p>{% block title %}{% endblock %}</p>
             </div>
-            <div id="npb-resizable-modal-header-icons" class="npb-resizable-modal-header-icons-{{ info.elementType }}">
+            <div id="frgef--neo-page-builder-resizable-modal-header-icons" class="frgef--neo-page-builder-resizable-modal-header-icons-{{ info.elementType }}">
                 {% set icons = 'page' == info.elementType ? ['fullscreen', 'sidebar'] : ['fullscreen', 'sidebar', 'details'] %}
                 {% for icon in icons %}
-                    <div id="npb-resizable-modal-header-icon-{{ icon }}" class="npb-resizable-modal-header-icon" data-title="{{ ('modal_header.' ~ icon)|trans }}">
+                    <div id="frgef--neo-page-builder-resizable-modal-header-icon-{{ icon }}" class="frgef--neo-page-builder-resizable-modal-header-icon" data-title="{{ ('modal_header.' ~ icon)|trans }}">
                         {% include '@!NeoPageBuilder/components/icons/resizable/' ~ icon ~ '.html.twig' %}
                     </div>
                 {% endfor %}
             </div>
         </div>
-        <div id="npb-resizable-modal-header-body">
+        <div id="frgef--neo-page-builder-resizable-modal-header-body">
             {% block content %}{% endblock %}
         </div>
-        <div id="npb-resizable-modal-footer">
+        <div id="frgef--neo-page-builder-resizable-modal-footer">
             {% set footer_icons = ['close', 'backward', 'forward', 'check'] %}
             {% for footer_icon in footer_icons %}
-                <div id="npb-resizable-modal-footer-icon-{{ footer_icon }}" class="npb-resizable-modal-footer-icon" data-title="{{ ('modal_footer.' ~ footer_icon)|trans }}">
+                <div id="frgef--neo-page-builder-resizable-modal-footer-icon-{{ footer_icon }}" class="frgef--neo-page-builder-resizable-modal-footer-icon" data-title="{{ ('modal_footer.' ~ footer_icon)|trans }}">
                     <span></span>
                     {% include '@!NeoPageBuilder/components/icons/resizable/' ~ footer_icon ~ '.html.twig' %}
                 </div>
             {% endfor %}
         </div>
-        <div id="npb-resizable-modal-resizer">
+        <div id="frgef--neo-page-builder-resizable-modal-resizer">
             {% include '@!NeoPageBuilder/components/icons/resizable/resize.html.twig' %}
         </div>
     </div>

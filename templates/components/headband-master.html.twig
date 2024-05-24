@@ -1,11 +1,11 @@
-<div id="npb-headband-master">
-    <div id="npb-headband-master-logo">
+<div id="frgef--neo-page-builder-headband-master">
+    <div id="frgef--neo-page-builder-headband-master-logo">
 
     </div>
-    <div id="npb-headband-header-master">
+    <div id="frgef--neo-page-builder-headband-header-master">
         {%  set icons = ['add', 'save', 'exchange', 'clock', 'trash', 'cog', 'dots'] %}
         {% for icon in icons %}
-            <button id="npb-headband-header-icon-{{ get_timestamp() }}" type="button" class="npb-headband-header-icon-container npb-headband-header-icon-container-{{ icon }}{% if icon in ['cog', 'clock'] %} npb-headband-header-icon-container-draggable-modal{% endif %}" data-title="{{ (icon ~ '.master')|trans }}">
+            <button id="frgef--neo-page-builder-headband-header-icon-{{ get_timestamp() }}" type="button" class="frgef--neo-page-builder-headband-header-icon-container frgef--neo-page-builder-headband-header-icon-container-{{ icon }}{% if icon in ['cog', 'clock'] %} frgef--neo-page-builder-headband-header-icon-container-draggable-modal{% endif %}" data-title="{{ (icon ~ '.master')|trans }}">
                 {% include '@!NeoPageBuilder/components/icons/headband/' ~ icon ~ '.html.twig' %}
             </button>
         {% endfor %}

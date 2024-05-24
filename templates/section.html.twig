@@ -1,19 +1,19 @@
 {% set timestamp = get_timestamp() %}
-<div id="npb-section-{{ timestamp }}" data-uuid="{{ timestamp }}" data-complexity="{{ complexity }}" data-pattern="{{ rowType }}" class="npb-section npb-section-{{ type }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_section') }}>
+<div id="frgef--neo-page-builder-section-{{ timestamp }}" data-uuid="{{ timestamp }}" data-complexity="{{ complexity }}" data-pattern="{{ rowType }}" class="frgef--neo-page-builder-section frgef--neo-page-builder-section-{{ type }}" {{ stimulus_controller('frgef/neo-page-builder-bundle/frgef_neo_page_builder_section') }}>
     {% set headbandType = 'section' %}
     {% include '@!NeoPageBuilder/components/headband.html.twig' %}
     {% for size in pattern %}
         {% set width = size %}
-        <div class="npb-blocks-wrapper" style="width: {{ width }}%;">
-            <div id="npb-blocks-draggable-container-{{ get_timestamp() }}" class="npb-blocks-draggable-container"></div>
-            <button id="npb-add-block-{{ get_timestamp() }}" type="button" class="npb-add-block" data-title="{{ 'create.new.block'|trans }}">
-                <span class="npb-button-bg"></span>
-                <span class="npb-button-symbol">+</span>
+        <div class="frgef--neo-page-builder-blocks-wrapper" style="width: {{ width }}%;">
+            <div id="frgef--neo-page-builder-blocks-draggable-container-{{ get_timestamp() }}" class="frgef--neo-page-builder-blocks-draggable-container"></div>
+            <button id="frgef--neo-page-builder-add-block-{{ get_timestamp() }}" type="button" class="frgef--neo-page-builder-add-block" data-title="{{ 'create.new.block'|trans }}">
+                <span class="frgef--neo-page-builder-button-bg"></span>
+                <span class="frgef--neo-page-builder-button-symbol">+</span>
             </button>
         </div>
     {% endfor %}
-    <button id="npb-add-section-{{ get_timestamp() }}" type="button" class="npb-add-section" data-title="{{ 'create.new.section'|trans }}">
-        <span class="npb-button-bg"></span>
-        <span class="npb-button-symbol">+</span>
+    <button id="frgef--neo-page-builder-add-section-{{ get_timestamp() }}" type="button" class="frgef--neo-page-builder-add-section" data-title="{{ 'create.new.section'|trans }}">
+        <span class="frgef--neo-page-builder-button-bg"></span>
+        <span class="frgef--neo-page-builder-button-symbol">+</span>
     </button>
 </div>

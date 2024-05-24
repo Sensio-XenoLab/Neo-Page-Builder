@@ -1,14 +1,14 @@
-<div id="npb-fixed-modal-block-choice" class="npb-fixed-modal">
-    <div class="npb-fixed-modal-container">
-        <div class="npb-fixed-modal-header">
-            <p class="npb-fixed-modal-title">{{ 'insert.block'|trans }}</p>
-            <div class="npb-fixed-modal-close-wrapper">
+<div id="frgef--neo-page-builder-fixed-modal-block-choice" class="frgef--neo-page-builder-fixed-modal">
+    <div class="frgef--neo-page-builder-fixed-modal-container">
+        <div class="frgef--neo-page-builder-fixed-modal-header">
+            <p class="frgef--neo-page-builder-fixed-modal-title">{{ 'insert.block'|trans }}</p>
+            <div class="frgef--neo-page-builder-fixed-modal-close-wrapper">
                 {% include '@!NeoPageBuilder/components/icons/headband/close.html.twig' %}
             </div>
         </div>
-        <div class="npb-fixed-modal-choices-container{% if isFullScreen == true %} npb-fixed-modal-choices-container-fullscreen{% endif %}">
+        <div class="frgef--neo-page-builder-fixed-modal-choices-container{% if isFullScreen == true %} frgef--neo-page-builder-fixed-modal-choices-container-fullscreen{% endif %}">
             {% for block in get_block_choices(isFullScreen) %}
-                <div class="npb-fixed-modal-blocks-choices-examples" data-model="{{ block }}">
+                <div class="frgef--neo-page-builder-fixed-modal-blocks-choices-examples" data-model="{{ block }}">
                     {% include '@!NeoPageBuilder/components/icons/block-choices/' ~ block ~'.html.twig' %}
                     <span>{{ block }}</span>
                 </div>

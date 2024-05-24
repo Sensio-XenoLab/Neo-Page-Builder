@@ -52,7 +52,7 @@ export default class extends Controller {
     connect() {
         this.listeners()
         this.headerIconListeners()
-        const input = $(this.element).find('.npb-headband-input-section')
+        const input = $(this.element).find('.frgef--neo-page-builder-headband-input-section')
         this.resizeInput(input)
     }
 
@@ -63,79 +63,79 @@ export default class extends Controller {
      */
     listeners() {
 
-        $(this.element).find('.npb-add-section').off();
-        $(this.element).find('.npb-add-section').on('click', (e) => {
+        $(this.element).find('.frgef--neo-page-builder-add-section').off();
+        $(this.element).find('.frgef--neo-page-builder-add-section').on('click', (e) => {
 
             if (e.currentTarget !== this.currentSectionBtn
-                || $('.npb-fixed-modal').length === 0) {
+                || $('.frgef--neo-page-builder-fixed-modal').length === 0) {
 
                 this.currentSectionBtn = e.currentTarget
                 this.currentBlockBtn = null
                 this.currentHeaderBtn = null
 
                 $(e.currentTarget).prop('disabled', true)
-                $('.npb-fixed-modal').remove()
+                $('.frgef--neo-page-builder-fixed-modal').remove()
 
                 const btnPosition = $(e.currentTarget).offset()
-                const npbContainerTop = $('#npb').offset().top
+                const npbContainerTop = $('#frgef--neo-page-builder').offset().top
                 this.mousePosition = {left: btnPosition.left + this.sectionPadding, top: btnPosition.top + this.sectionPadding - npbContainerTop}
                 this.ajax(
                     '/_npb/fixed-modal',
                     {
-                        type: 'section', isSpecial: $(this.element).hasClass('npb-section-special')
+                        type: 'section', isSpecial: $(this.element).hasClass('frgef--neo-page-builder-section-special')
                     },
                     this.currentSectionBtn
                 )
             }
         });
 
-        $(this.element).find('.npb-add-block').off();
-        $(this.element).find('.npb-add-block').on('click', (e) => {
+        $(this.element).find('.frgef--neo-page-builder-add-block').off();
+        $(this.element).find('.frgef--neo-page-builder-add-block').on('click', (e) => {
 
             if (e.currentTarget !== this.currentBlockBtn
-                || $('.npb-fixed-modal').length === 0) {
+                || $('.frgef--neo-page-builder-fixed-modal').length === 0) {
 
                 this.currentBlockBtn = e.currentTarget
                 this.currentSectionBtn = null
                 this.currentHeaderBtn = null
 
                 $(e.currentTarget).prop('disabled', true)
-                $('.npb-fixed-modal').remove()
+                $('.frgef--neo-page-builder-fixed-modal').remove()
 
                 const btnPosition = $(e.currentTarget).offset()
-                const npbContainerTop = $('#npb').offset().top
+                const npbContainerTop = $('#frgef--neo-page-builder').offset().top
                 this.mousePosition = {left: btnPosition.left + this.sectionPadding, top: btnPosition.top + this.sectionPadding - npbContainerTop}
                 this.ajax(
                     '/_npb/fixed-modal',
                     {
                         type: 'block',
-                        isSpecial: $(this.element).closest('npb-section-special').length > 0,
-                        isFullScreen: $(this.element).closest('.npb-row-full').length > 0
+                        isSpecial: $(this.element).closest('frgef--neo-page-builder-section-special').length > 0,
+                        isFullScreen: $(this.element).closest('.frgef--neo-page-builder-row-full').length > 0
                     },
                     this.currentBlockBtn
                 )
             }
         });
 
-        if ($(this.element).closest('.npb-row-special').length > 0) {
-            this.dragingLogic('.npb-row-special-section.npb-row-section-draggable', '.npb-section-special');
+        if ($(this.element).closest('.frgef--neo-page-builder-row-special').length > 0) {
+            this.dragingLogic('.frgef--neo-page-builder-row-special-section.frgef--neo-page-builder-row-section-draggable', '.frgef--neo-page-builder-section-special');
         }
 
-        if ($(this.element).closest('.npb-row-normal').length > 0) {
-            this.dragingLogic('.npb-row-normal.npb-row-section-draggable', '.npb-section-standard');
+        if ($(this.element).closest('.frgef--neo-page-builder-row-normal').length > 0) {
+            this.dragingLogic('.frgef--neo-page-builder-row-normal.frgef--neo-page-builder-row-section-draggable', '.frgef--neo-page-builder-section-standard');
         }
 
-        $(this.element).find('.npb-headband-input-section').off();
-        $(this.element).find('.npb-headband-input-section').on('input', (e) => {
+        $(this.element).find('.frgef--neo-page-builder-headband-input-section').off();
+        $(this.element).find('.frgef--neo-page-builder-headband-input-section').on('input', (e) => {
             this.resizeInput(e.currentTarget)
         });
 
-        $(this.element).find('.npb-headband-input-section').on('focusout', (e) => {
+        $(this.element).find('.frgef--neo-page-builder-headband-input-section').on('focusout', (e) => {
             this.placeholderIfEmptyValue(e.currentTarget)
         });
 
-        $(this.element).find('.npb-headband-header-expand').off();
-        $(this.element).find('.npb-headband-header-expand').on('click', (e) => {
+        $(this.element).find('.frgef--neo-page-builder-headband-header-expand').off();
+        $(this.element).find('.frgef--neo-page-builder-headband-header-expand').on('click', (e) => {
             this.expandElement(e.currentTarget);
         });
     }
@@ -145,28 +145,28 @@ export default class extends Controller {
      */
     headerIconListeners() {
 
-        $(this.element).find('.npb-headband-header-icon-container').off()
-        $(this.element).find('.npb-headband-header-icon-container').on('click', (e) => {
+        $(this.element).find('.frgef--neo-page-builder-headband-header-icon-container').off()
+        $(this.element).find('.frgef--neo-page-builder-headband-header-icon-container').on('click', (e) => {
 
             const elmt = e.currentTarget
-            if ($(elmt).hasClass('npb-headband-header-icon-container-trash')
-                && $(elmt).closest('.npb-section').length > 0) {
+            if ($(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-trash')
+                && $(elmt).closest('.frgef--neo-page-builder-section').length > 0) {
 
-                $('#npb-tooltip').remove()
-                const addSectionBtn = $(this.element).closest('.npb-row').find('.npb-initial-add-section-btn')[0]
-                const sections = $(this.element).closest('.npb-row').find('.npb-section')
+                $('#frgef--neo-page-builder-tooltip').remove()
+                const addSectionBtn = $(this.element).closest('.frgef--neo-page-builder-row').find('.frgef--neo-page-builder-initial-add-section-btn')[0]
+                const sections = $(this.element).closest('.frgef--neo-page-builder-row').find('.frgef--neo-page-builder-section')
                 $(this.element).remove()
 
                 if ($(sections).length - 1 < 1) {
-                    $(addSectionBtn).removeClass('npb-hide-initial-btn')
+                    $(addSectionBtn).removeClass('frgef--neo-page-builder-hide-initial-btn')
                 }
                 this.orderSections()
 
-            } else if ($(elmt).hasClass('npb-headband-header-icon-container-save')
-                || $(elmt).hasClass('npb-headband-header-icon-container-dots')
+            } else if ($(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-save')
+                || $(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-dots')
             ) {
 
-                if (elmt !== this.currentHeaderBtn || $('.npb-fixed-modal').length === 0) {
+                if (elmt !== this.currentHeaderBtn || $('.frgef--neo-page-builder-fixed-modal').length === 0) {
 
                     if (this.currentHeaderBtn !== null) {
                         $(this.currentHeaderBtn).prop('disabled', false);
@@ -174,10 +174,10 @@ export default class extends Controller {
 
                     this.currentHeaderBtn = elmt
                     $(elmt).prop('disabled', true)
-                    $('.npb-fixed-modal').remove()
+                    $('.frgef--neo-page-builder-fixed-modal').remove()
 
                     const btnPosition = $(elmt).offset()
-                    const npbContainerTop = $('#npb').offset().top
+                    const npbContainerTop = $('#frgef--neo-page-builder').offset().top
                     this.mousePosition = {
                         left: btnPosition.left + this.sectionPadding - 5,
                         top: btnPosition.top - npbContainerTop
@@ -186,7 +186,7 @@ export default class extends Controller {
                     const uuid = $(elmt).closest('[data-uuid]').attr('data-uuid')
                     $.post(
                         '/_npb/header-fixed-modal',
-                        {type: $(elmt).hasClass('npb-headband-header-icon-container-save') ? 'save' : 'dots', uuid},
+                        {type: $(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-save') ? 'save' : 'dots', uuid},
                         (data, status) => {
                             if (status === 'success') {
                                 this.displayChoices(data, elmt)
@@ -251,36 +251,38 @@ export default class extends Controller {
      */
     displayChoices(html, elmt) {
 
-        $('#npb-wrapper').append(html)
+        $('#frgef--neo-page-builder-wrapper').append(html)
 
-        const width = $('.npb-fixed-modal').width();
+        const width = $('.frgef--neo-page-builder-fixed-modal').width();
+        const wrapperLeft = $('#frgef--neo-page-builder-wrapper').offset().left
+        const left = this.mousePosition.left - wrapperLeft
         const position = {
-            left: this.mousePosition.left - (width / 2),
+            left: left - (width / 2),
             top: this.mousePosition.top
         }
 
-        if (this.mousePosition.left + width / 2 > $('#npb-wrapper').width()) {
-            position.left = $('#npb-wrapper').width() - width + this.sectionPadding
-            $('.npb-fixed-modal').removeClass('nbp-fixed-modal-leftside').addClass('nbp-fixed-modal-rightside')
+        if (left + width / 2 > $('#frgef--neo-page-builder-wrapper').width()) {
+            position.left = $('#frgef--neo-page-builder-wrapper').width() - width - this.sectionPadding + 5
+            $('.frgef--neo-page-builder-fixed-modal').removeClass('frgef--neo-page-builder-fixed-modal-leftside').addClass('frgef--neo-page-builder-fixed-modal-rightside')
         }
 
-        if (this.mousePosition.left - width / 2 < this.sectionPadding * 2) {
-            position.left = this.sectionPadding
-            $('.npb-fixed-modal').addClass('nbp-fixed-modal-leftside').removeClass('nbp-fixed-modal-rightside')
+        if (left - width / 2 < this.sectionPadding * 2) {
+            position.left = this.sectionPadding - 5
+            $('.frgef--neo-page-builder-fixed-modal').addClass('frgef--neo-page-builder-fixed-modal-leftside').removeClass('frgef--neo-page-builder-fixed-modal-rightside')
         }
 
-        const pad = $('#npb-fixed-modal-header-action').length > 0 ? 3 : 10
-        position['--npb-left-value'] = ($(elmt).offset().left - position.left + pad) + 'px'
+        const pad = $('#frgef--neo-page-builder-fixed-modal-header-action').length > 0 ? 3 : 10
+        position['--frgef--neo-page-builder-left-value'] = ($(elmt).offset().left - position.left - wrapperLeft + pad) + 'px'
 
-        $('.npb-fixed-modal')
+        $('.frgef--neo-page-builder-fixed-modal')
             .css(position)
             .attr('data-ref', $(elmt).attr('id'))
 
         this.modalPosition()
 
-        $('.npb-fixed-modal-close-wrapper').off()
-        $('.npb-fixed-modal-close-wrapper').on('click', () => {
-            $('.npb-fixed-modal').remove()
+        $('.frgef--neo-page-builder-fixed-modal-close-wrapper').off()
+        $('.frgef--neo-page-builder-fixed-modal-close-wrapper').on('click', () => {
+            $('.frgef--neo-page-builder-fixed-modal').remove()
             $(this.currentBlockBtn).prop('disabled', false)
             this.currentBlockBtn = null
             $(this.currentSectionBtn).prop('disabled', false)
@@ -289,17 +291,17 @@ export default class extends Controller {
             this.currentHeaderBtn = null
         })
 
-        $('.npb-fixed-modal-sections-choices-examples[data-model]').off()
-        $('.npb-fixed-modal-sections-choices-examples[data-model]').on('click', (e) => {
+        $('.frgef--neo-page-builder-fixed-modal-sections-choices-examples[data-model]').off()
+        $('.frgef--neo-page-builder-fixed-modal-sections-choices-examples[data-model]').on('click', (e) => {
 
             const model = $(e.currentTarget).data('model');
-            $('.npb-fixed-modal').remove()
+            $('.frgef--neo-page-builder-fixed-modal').remove()
             $(this.currentSectionBtn).prop('disabled', false)
             const elmt = this.currentSectionBtn
             this.currentSectionBtn = null
 
             const container = '#' + $(this.element)
-                .closest('.npb-row')
+                .closest('.frgef--neo-page-builder-row')
                 .attr('id');
 
             this.ajax(
@@ -307,8 +309,8 @@ export default class extends Controller {
                 {
                     pattern: model,
                     type: $(this.element)
-                            .closest('.npb-row')
-                            .find('.npb-row-special-section')
+                            .closest('.frgef--neo-page-builder-row')
+                            .find('.frgef--neo-page-builder-row-special-section')
                             .length > 0
                         ? 'special'
                         : 'standard'
@@ -319,15 +321,15 @@ export default class extends Controller {
             )
         })
 
-        $('.npb-fixed-modal-blocks-choices-examples[data-model]').off()
-        $('.npb-fixed-modal-blocks-choices-examples[data-model]').on('click', (e) => {
+        $('.frgef--neo-page-builder-fixed-modal-blocks-choices-examples[data-model]').off()
+        $('.frgef--neo-page-builder-fixed-modal-blocks-choices-examples[data-model]').on('click', (e) => {
             const model = $(e.currentTarget).data('model');
-            $('.npb-fixed-modal').remove()
+            $('.frgef--neo-page-builder-fixed-modal').remove()
             $(this.currentBlockBtn).prop('disabled', false)
 
             const container = '#' + $(this.currentBlockBtn)
-                .closest('.npb-blocks-wrapper')
-                .find('.npb-blocks-draggable-container')
+                .closest('.frgef--neo-page-builder-blocks-wrapper')
+                .find('.frgef--neo-page-builder-blocks-draggable-container')
                 .attr('id');
             const elmt = this.currentBlockBtn
             this.currentBlockBtn = null
@@ -337,7 +339,7 @@ export default class extends Controller {
                 {
                     pattern: model,
                     isFullScreen: $(this.element)
-                        .closest('.npb-row-full')
+                        .closest('.frgef--neo-page-builder-row-full')
                         .length > 0
                 },
                 elmt,
@@ -347,39 +349,41 @@ export default class extends Controller {
 
         $(window).on('resize', () => {
 
-            if ($('.npb-fixed-modal').length > 0
+            if ($('.frgef--neo-page-builder-fixed-modal').length > 0
                 && elmt !== null
-                && $(elmt).attr('id') === $('.npb-fixed-modal').attr('data-ref')
+                && $(elmt).attr('id') === $('.frgef--neo-page-builder-fixed-modal').attr('data-ref')
             ) {
 
-                const npbContainerTop = $('#npb').offset().top
+                const npbContainerTop = $('#frgef--neo-page-builder').offset().top
                 let size = $(elmt).offset()
+                const wrapperLeft = $('#frgef--neo-page-builder-wrapper').offset().left
+                const left = size.left - wrapperLeft
                 const position = {
-                    left: size.left - (width / 2) + this.sectionPadding,
+                    left: left - (width / 2) + this.sectionPadding,
                     top: size.top + this.sectionPadding - npbContainerTop
                 }
 
-                if ($('#npb-fixed-modal-header-action').length > 0) {
+                if ($('#frgef--neo-page-builder-fixed-modal-header-action').length > 0) {
                     position.left -= 5
                 }
 
-                if (size.left + width / 2 > $('#npb-wrapper').width()) {
-                    position.left = $('#npb-wrapper').width() - width + this.sectionPadding
-                    $('.npb-fixed-modal').removeClass('nbp-fixed-modal-leftside').addClass('nbp-fixed-modal-rightside')
+                if (left + width / 2 > $('#frgef--neo-page-builder-wrapper').width()) {
+                    position.left = $('#frgef--neo-page-builder-wrapper').width() - width - this.sectionPadding + 5
+                    $('.frgef--neo-page-builder-fixed-modal').removeClass('frgef--neo-page-builder-fixed-modal-leftside').addClass('frgef--neo-page-builder-fixed-modal-rightside')
                 }
 
-                if (size.left - width / 2 < this.sectionPadding) {
-                    position.left = this.sectionPadding
-                    $('.npb-fixed-modal').addClass('nbp-fixed-modal-leftside').removeClass('nbp-fixed-modal-rightside')
+                if (left - width / 2 < this.sectionPadding) {
+                    position.left = this.sectionPadding - 5
+                    $('.frgef--neo-page-builder-fixed-modal').addClass('frgef--neo-page-builder-fixed-modal-leftside').removeClass('frgef--neo-page-builder-fixed-modal-rightside')
                 }
 
-                const padLeft = $('#npb-fixed-modal-header-action').length > 0 ? 3 : 10
-                const padTop = $('#npb-fixed-modal-header-action').length > 0 ? 20 : 0
+                const padLeft = $('#frgef--neo-page-builder-fixed-modal-header-action').length > 0 ? 3 : 10
+                const padTop = $('#frgef--neo-page-builder-fixed-modal-header-action').length > 0 ? 20 : 0
 
                 position.top -= padTop
-                position['--npb-left-value'] = ($(elmt).offset().left - position.left + padLeft) + 'px'
+                position['--frgef--neo-page-builder-left-value'] = ($(elmt).offset().left - position.left - wrapperLeft + padLeft) + 'px'
 
-                $('.npb-fixed-modal').css(position)
+                $('.frgef--neo-page-builder-fixed-modal').css(position)
             }
         })
     }
@@ -391,16 +395,16 @@ export default class extends Controller {
      */
     modalPosition() {
 
-        const modal = $('.npb-fixed-modal')
+        const modal = $('.frgef--neo-page-builder-fixed-modal')
         if (modal.length > 0) {
             const windowHeight = window.innerHeight
             const modalPosY = $(modal).offset().top
             const modalHeight = $(modal).height()
             if (modalPosY + modalHeight > windowHeight
             ) {
-                $(modal).addClass('npb-fixed-modal-above-target')
+                $(modal).addClass('frgef--neo-page-builder-fixed-modal-above-target')
             } else {
-                $(modal).removeClass('npb-fixed-modal-above-target')
+                $(modal).removeClass('frgef--neo-page-builder-fixed-modal-above-target')
             }
         }
     }
@@ -420,17 +424,17 @@ export default class extends Controller {
                 ids.push('#' + $(this).attr('id'));
             });
             let option = {
-                placeholder: 'npb-section-placeholder',
+                placeholder: 'frgef--neo-page-builder-section-placeholder',
                 update: this.dropped.bind(this),
                 items: items,
-                handle: '.npb-headband',
+                handle: '.frgef--neo-page-builder-headband',
                 start: function(e, ui ){
                     $(ui.placeholder).css('height', ui.helper.outerHeight())
                     $(ui.item).css('opacity', 0.5)
                 },
                 stop: (e, ui ) => {
                     if ($(ui.item).data('complexity') === 'complex'
-                        && $(ui.item).closest('.npb-row-special').length > 0) {
+                        && $(ui.item).closest('.frgef--neo-page-builder-row-special').length > 0) {
                         $(ids.join(', ')).sortable('cancel')
                     }
                     $(ui.item).css('opacity', 1)
@@ -451,7 +455,7 @@ export default class extends Controller {
      * @param {Object} ui - The UI object holding the dropped item.
      */
     dropped(event, ui) {
-        if ($(ui.item).hasClass('npb-section')) {
+        if ($(ui.item).hasClass('frgef--neo-page-builder-section')) {
             this.orderSections();
         }
     }
@@ -462,18 +466,18 @@ export default class extends Controller {
      * @returns {void}
      */
     orderSections() {
-        const rows = $('.npb-row-section-draggable');
+        const rows = $('.frgef--neo-page-builder-row-section-draggable');
         rows.each(function(index) {
-            const sections = $(this).find('.npb-section')
+            const sections = $(this).find('.frgef--neo-page-builder-section')
             if ($(sections).length < 1) {
-                $(this).find('.npb-initial-add-section-btn .npb-add-section').prop('disabled', false)
+                $(this).find('.frgef--neo-page-builder-initial-add-section-btn .frgef--neo-page-builder-add-section').prop('disabled', false)
             }
             sections.each(function(index2) {
-                if ($(this).hasClass('npb-section npb-section-standard') && $(this).closest('.npb-row-special-section').length > 0) {
-                    $(this).removeClass('npb-section npb-section-standard').addClass('npb-section npb-section-special')
+                if ($(this).hasClass('frgef--neo-page-builder-section frgef--neo-page-builder-section-standard') && $(this).closest('.frgef--neo-page-builder-row-special-section').length > 0) {
+                    $(this).removeClass('frgef--neo-page-builder-section frgef--neo-page-builder-section-standard').addClass('frgef--neo-page-builder-section frgef--neo-page-builder-section-special')
                 }
-                if ($(this).hasClass('npb-section npb-section-special') && $(this).closest('.npb-row-special-section').length === 0) {
-                    $(this).removeClass('npb-section npb-section-special').addClass('npb-section npb-section-standard')
+                if ($(this).hasClass('frgef--neo-page-builder-section frgef--neo-page-builder-section-special') && $(this).closest('.frgef--neo-page-builder-row-special-section').length === 0) {
+                    $(this).removeClass('frgef--neo-page-builder-section frgef--neo-page-builder-section-special').addClass('frgef--neo-page-builder-section frgef--neo-page-builder-section-standard')
                 }
             });
         });
@@ -498,10 +502,10 @@ export default class extends Controller {
      */
     interactiveHeaderInputPosition() {
 
-        const container = $(this.element).find('.npb-headband-interactive')
-        const input = $(container).find('.npb-headband-input-interactive')
+        const container = $(this.element).find('.frgef--neo-page-builder-headband-interactive')
+        const input = $(container).find('.frgef--neo-page-builder-headband-input-interactive')
         const containerWidth = $(container).width()
-        const iconsContainerWidth = $(container).find('.npb-headband-header').width()
+        const iconsContainerWidth = $(container).find('.frgef--neo-page-builder-headband-header').width()
         const inputWidth = $(input).width()
         const width = containerWidth - iconsContainerWidth - inputWidth - 44
         const left = containerWidth / 2 - iconsContainerWidth - (inputWidth + 22) / 2
@@ -535,10 +539,10 @@ export default class extends Controller {
     expandElement(elmt) {
         if ($(elmt).attr('aria-expanded') === 'true') {
             $(elmt).attr('aria-expanded', 'false')
-            $(this.element).closest('.npb-section').addClass('npb-hide-expanded')
+            $(this.element).closest('.frgef--neo-page-builder-section').addClass('frgef--neo-page-builder-hide-expanded')
         } else {
             $(elmt).attr('aria-expanded', 'true')
-            $(this.element).closest('.npb-section').removeClass('npb-hide-expanded')
+            $(this.element).closest('.frgef--neo-page-builder-section').removeClass('frgef--neo-page-builder-hide-expanded')
         }
     }
 
@@ -548,12 +552,12 @@ export default class extends Controller {
      * @returns {void}
      */
     checkEmptyRows() {
-        const containers = $('[id^="npb-row-"]:not(.npb-row-full):not(.npb-row-special)')
+        const containers = $('[id^="frgef--neo-page-builder-row-"]:not(.frgef--neo-page-builder-row-full):not(.frgef--neo-page-builder-row-special)')
         for (let i = 0; i < containers.length; i++) {
-            if ($(containers[i]).find('.npb-section').length < 1) {
-                $(containers[i]).find('.npb-initial-add-section-btn').removeClass('npb-hide-initial-btn')
+            if ($(containers[i]).find('.frgef--neo-page-builder-section').length < 1) {
+                $(containers[i]).find('.frgef--neo-page-builder-initial-add-section-btn').removeClass('frgef--neo-page-builder-hide-initial-btn')
             } else {
-                $(containers[i]).find('.npb-initial-add-section-btn').addClass('npb-hide-initial-btn')
+                $(containers[i]).find('.frgef--neo-page-builder-initial-add-section-btn').addClass('frgef--neo-page-builder-hide-initial-btn')
             }
         }
     }

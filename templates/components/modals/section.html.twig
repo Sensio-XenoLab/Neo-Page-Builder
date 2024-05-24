@@ -1,12 +1,12 @@
-<div id="npb-fixed-modal-section-choice" class="npb-fixed-modal">
-    <div class="npb-fixed-modal-container">
-        <div class="npb-fixed-modal-header">
-            <p class="npb-fixed-modal-title">{{ 'insert.section'|trans }}</p>
-            <div class="npb-fixed-modal-close-wrapper">
+<div id="frgef--neo-page-builder-fixed-modal-section-choice" class="frgef--neo-page-builder-fixed-modal">
+    <div class="frgef--neo-page-builder-fixed-modal-container">
+        <div class="frgef--neo-page-builder-fixed-modal-header">
+            <p class="frgef--neo-page-builder-fixed-modal-title">{{ 'insert.section'|trans }}</p>
+            <div class="frgef--neo-page-builder-fixed-modal-close-wrapper">
                 {% include '@!NeoPageBuilder/components/icons/headband/close.html.twig' %}
             </div>
         </div>
-        <div class="npb-fixed-modal-choices-container{% if isSpecial == true %} npb-fixed-modal-choices-container-special{% endif %}">
+        <div class="frgef--neo-page-builder-fixed-modal-choices-container{% if isSpecial == true %} frgef--neo-page-builder-fixed-modal-choices-container-special{% endif %}">
             {% if isSpecial == false %}
                 {% for pattern in 'a'..'t' %}
                     {% include '@!NeoPageBuilder/components/modals/choices/sections/pattern-' ~ pattern ~'.html.twig' %}

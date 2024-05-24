@@ -42,38 +42,38 @@ export default class extends Controller {
      */
     listeners() {
 
-        $(this.element).find('#npb-initial-add-row-btn button').off();
-        $(this.element).find('#npb-initial-add-row-btn button').on('click', (e) => {
+        $(this.element).find('#frgef--neo-page-builder-initial-add-row-btn button').off();
+        $(this.element).find('#frgef--neo-page-builder-initial-add-row-btn button').on('click', (e) => {
 
-            if (e.currentTarget !== this.currentRowBtn || $('.npb-fixed-modal').length === 0) {
+            if (e.currentTarget !== this.currentRowBtn || $('.frgef--neo-page-builder-fixed-modal').length === 0) {
 
                 this.currentRowBtn = e.currentTarget
                 $(e.currentTarget).prop('disabled', true)
-                $('.npb-fixed-modal').remove()
+                $('.frgef--neo-page-builder-fixed-modal').remove()
 
                 const btnPosition = $(e.currentTarget).offset()
-                const npbContainerTop = $('#npb').offset().top;
+                const npbContainerTop = $('#frgef--neo-page-builder').offset().top;
                 this.mousePosition = {left: btnPosition.left + this.rowPadding, top: btnPosition.top + this.rowPadding - npbContainerTop};
                 this.ajax('/_npb/fixed-modal', {type: 'row'}, this.currentRowBtn)
             }
         });
 
-        $('#npb-headband-header-master > button').off()
-        $('#npb-headband-header-master > button').on('click', (e) => {
-            $('#npb-resizable-modal-container').remove()
-            $('#npb-wrapper').removeAttr('style')
+        $('#frgef--neo-page-builder-headband-header-master > button').off()
+        $('#frgef--neo-page-builder-headband-header-master > button').on('click', (e) => {
+            $('#frgef--neo-page-builder-resizable-modal-container').remove()
+            $('#frgef--neo-page-builder-wrapper').removeAttr('style')
             const elmt = e.currentTarget
-            if ($(elmt).hasClass('npb-headband-header-icon-container-trash')) {
-                /*$('#npb-rows-wrapper > .npb-row').remove()
-                $('#npb-initial-add-row-btn').removeClass('npb-hide-initial-btn')*/
+            if ($(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-trash')) {
+                /*$('#frgef--neo-page-builder-rows-wrapper > .frgef--neo-page-builder-row').remove()
+                $('#frgef--neo-page-builder-initial-add-row-btn').removeClass('frgef--neo-page-builder-hide-initial-btn')*/
                 this.displayHeaderIconsModal('trash', elmt)
-            } else if ($(elmt).hasClass('npb-headband-header-icon-container-save')) {
+            } else if ($(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-save')) {
                 this.displayHeaderIconsModal('save', elmt)
-            } else if ($(elmt).hasClass('npb-headband-header-icon-container-exchange')) {
+            } else if ($(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-exchange')) {
                 this.displayHeaderIconsModal('exchange', elmt)
-            } else if ($(elmt).hasClass('npb-headband-header-icon-container-add')) {
+            } else if ($(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-add')) {
 
-            } else if ($(elmt).hasClass('npb-headband-header-icon-container-dots')) {
+            } else if ($(elmt).hasClass('frgef--neo-page-builder-headband-header-icon-container-dots')) {
                 this.displayHeaderIconsModal('dots', elmt)
             }
         })
@@ -81,7 +81,7 @@ export default class extends Controller {
 
     displayHeaderIconsModal(type, elmt) {
 
-        if (elmt !== this.currentRowBtn || $('.npb-fixed-modal').length === 0) {
+        if (elmt !== this.currentRowBtn || $('.frgef--neo-page-builder-fixed-modal').length === 0) {
 
             if (this.currentRowBtn !== null) {
                 $(this.currentRowBtn).prop('disabled', false);
@@ -89,10 +89,10 @@ export default class extends Controller {
 
             this.currentRowBtn = elmt
             $(elmt).prop('disabled', true)
-            $('.npb-fixed-modal').remove()
+            $('.frgef--neo-page-builder-fixed-modal').remove()
 
             const btnPosition = $(elmt).offset()
-            const npbContainerTop = $('#npb').offset().top
+            const npbContainerTop = $('#frgef--neo-page-builder').offset().top
             this.mousePosition = {
                 left: btnPosition.left + this.rowPadding - 5,
                 top: btnPosition.top + this.rowPadding - npbContainerTop
@@ -121,95 +121,99 @@ export default class extends Controller {
      */
     displayChoices(html, elmt) {
 
-        $('#npb-wrapper').append(html)
+        $('#frgef--neo-page-builder-wrapper').append(html)
 
-        const width = $('.npb-fixed-modal').width();
-        const position = {left: this.mousePosition.left - (width / 2), top: this.mousePosition.top}
+        const width = $('.frgef--neo-page-builder-fixed-modal').width();
+        const wrapperLeft = $('#frgef--neo-page-builder-wrapper').offset().left
+        const left = this.mousePosition.left - wrapperLeft
+        const position = {left: left - (width / 2), top: this.mousePosition.top}
 
-        if (this.mousePosition.left + width / 2 > $('#npb-wrapper').width()) {
-            position.left = $('#npb-wrapper').width() - width + this.rowPadding
-            $('.npb-fixed-modal').removeClass('nbp-fixed-modal-leftside').addClass('nbp-fixed-modal-rightside')
+        if (left + width / 2 > $('#frgef--neo-page-builder-wrapper').width()) {
+            position.left = $('#frgef--neo-page-builder-wrapper').width() - width - this.rowPadding + 5
+            $('.frgef--neo-page-builder-fixed-modal').removeClass('frgef--neo-page-builder-fixed-modal-leftside').addClass('frgef--neo-page-builder-fixed-modal-rightside')
         }
 
-        if (this.mousePosition.left - width / 2 < 0) {
-            position.left = this.rowPadding
-            $('.npb-fixed-modal').addClass('nbp-fixed-modal-leftside').removeClass('nbp-fixed-modal-rightside')
+        if (left - width / 2 < 0) {
+            position.left = this.rowPadding - 5
+            $('.frgef--neo-page-builder-fixed-modal').addClass('frgef--neo-page-builder-fixed-modal-leftside').removeClass('frgef--neo-page-builder-fixed-modal-rightside')
         }
 
-        const pad = $('#npb-fixed-modal-header-action').length > 0 ? 5 : 10
-        position['--npb-left-value'] = ($(elmt).offset().left - position.left + pad) + 'px'
+        const pad = $('#frgef--neo-page-builder-fixed-modal-header-action').length > 0 ? 5 : 10
+        position['--frgef--neo-page-builder-left-value'] = ($(elmt).offset().left - position.left - wrapperLeft + pad) + 'px'
 
-        $('.npb-fixed-modal')
+        $('.frgef--neo-page-builder-fixed-modal')
             .css(position)
             .attr('data-ref', $(elmt).attr('id'))
 
-        $('.npb-fixed-modal-close-wrapper').off()
-        $('.npb-fixed-modal-close-wrapper').on('click', () => {
-            $('.npb-fixed-modal').remove()
+        $('.frgef--neo-page-builder-fixed-modal-close-wrapper').off()
+        $('.frgef--neo-page-builder-fixed-modal-close-wrapper').on('click', () => {
+            $('.frgef--neo-page-builder-fixed-modal').remove()
             $(this.currentRowBtn).prop('disabled', false)
             $(this.currentRowBtn).removeAttr('data-disabled');
             this.currentRowBtn = null
         })
 
-        $('.npb-fixed-modal-choices-examples-special').off()
-        $('.npb-fixed-modal-choices-examples-special').on('click', (e) => {
-            $(e.currentTarget).parent().children().addClass('npb-fixed-modal-hide-elements')
-            $('.npb-fixed-modal-choices-examples-special-details').removeClass('npb-fixed-modal-hide-elements')
-            $('.npb-fixed-modal-title svg').removeClass('npb-fixed-modal-hide-elements')
+        $('.frgef--neo-page-builder-fixed-modal-choices-examples-special').off()
+        $('.frgef--neo-page-builder-fixed-modal-choices-examples-special').on('click', (e) => {
+            $(e.currentTarget).parent().children().addClass('frgef--neo-page-builder-fixed-modal-hide-elements')
+            $('.frgef--neo-page-builder-fixed-modal-choices-examples-special-details').removeClass('frgef--neo-page-builder-fixed-modal-hide-elements')
+            $('.frgef--neo-page-builder-fixed-modal-title svg').removeClass('frgef--neo-page-builder-fixed-modal-hide-elements')
         })
 
-        $('.npb-fixed-modal-title svg').off()
-        $('.npb-fixed-modal-title svg').on('click', () => {
-            $('.npb-fixed-modal-choices-examples-special').parent().children().removeClass('npb-fixed-modal-hide-elements')
-            $('.npb-fixed-modal-choices-examples-special-details').addClass('npb-fixed-modal-hide-elements')
-            $('.npb-fixed-modal-title svg').addClass('npb-fixed-modal-hide-elements')
+        $('.frgef--neo-page-builder-fixed-modal-title svg').off()
+        $('.frgef--neo-page-builder-fixed-modal-title svg').on('click', () => {
+            $('.frgef--neo-page-builder-fixed-modal-choices-examples-special').parent().children().removeClass('frgef--neo-page-builder-fixed-modal-hide-elements')
+            $('.frgef--neo-page-builder-fixed-modal-choices-examples-special-details').addClass('frgef--neo-page-builder-fixed-modal-hide-elements')
+            $('.frgef--neo-page-builder-fixed-modal-title svg').addClass('frgef--neo-page-builder-fixed-modal-hide-elements')
         })
 
-        $('.npb-fixed-modal-choices-examples[data-model]').off()
-        $('.npb-fixed-modal-choices-examples[data-model]').on('click', (e) => {
+        $('.frgef--neo-page-builder-fixed-modal-choices-examples[data-model]').off()
+        $('.frgef--neo-page-builder-fixed-modal-choices-examples[data-model]').on('click', (e) => {
             const model = $(e.currentTarget).data('model');
             const elmt = this.currentRowBtn
-            $('.npb-fixed-modal').remove()
+            $('.frgef--neo-page-builder-fixed-modal').remove()
             $(this.currentRowBtn).prop('disabled', false)
             this.currentRowBtn = null
             this.ajax(
                 '/_npb/row',
                 {pattern: model},
                 elmt,
-                '#npb-rows-wrapper'
+                '#frgef--neo-page-builder-rows-wrapper'
             )
         })
 
         $(window).on('resize', () => {
 
-            if ($('.npb-fixed-modal').length > 0 && this.currentRowBtn !== null) {
+            if ($('.frgef--neo-page-builder-fixed-modal').length > 0 && this.currentRowBtn !== null) {
 
                 const size = $(this.currentRowBtn).offset()
-                const npbContainerTop = $('#npb').offset().top
+                const wrapperLeft = $('#frgef--neo-page-builder-wrapper').offset().left
+                const left = size.left - wrapperLeft
+                const npbContainerTop = $('#frgef--neo-page-builder').offset().top
                 const position = {
-                    left: size.left - (width / 2) + 20,
+                    left: left - (width / 2) + this.rowPadding,
                     top: size.top + this.rowPadding - npbContainerTop
                 }
 
-                if ($('#npb-fixed-modal-header-action').length > 0) {
+                if ($('#frgef--neo-page-builder-fixed-modal-header-action').length > 0) {
                     position.left -= 5
                 }
 
-                if (size.left + width / 2 > $('#npb-wrapper').width()) {
-                    position.left = $('#npb-wrapper').width() - width + this.rowPadding
-                    $('.npb-fixed-modal').removeClass('nbp-fixed-modal-leftside').addClass('nbp-fixed-modal-rightside')
+                if (left + width / 2 > $('#frgef--neo-page-builder-wrapper').width()) {
+                    position.left = $('#frgef--neo-page-builder-wrapper').width() - width - this.rowPadding + 5
+                    $('.frgef--neo-page-builder-fixed-modal').removeClass('frgef--neo-page-builder-fixed-modal-leftside').addClass('frgef--neo-page-builder-fixed-modal-rightside')
                 }
 
-                if (size.left - width / 2 < 0) {
-                    position.left = this.rowPadding
-                    $('.npb-fixed-modal').addClass('nbp-fixed-modal-leftside').removeClass('nbp-fixed-modal-rightside')
+                if (left - width / 2 < 0) {
+                    position.left = this.rowPadding - 5
+                    $('.frgef--neo-page-builder-fixed-modal').addClass('frgef--neo-page-builder-fixed-modal-leftside').removeClass('frgef--neo-page-builder-fixed-modal-rightside')
                 }
 
-                const elmt = '#' + $('.npb-fixed-modal').attr('data-ref')
-                const pad = $('#npb-fixed-modal-header-action').length > 0 ? 5 : 10
+                const elmt = '#' + $('.frgef--neo-page-builder-fixed-modal').attr('data-ref')
+                const pad = $('#frgef--neo-page-builder-fixed-modal-header-action').length > 0 ? 5 : 10
 
-                position['--npb-left-value'] = ($(elmt).offset().left - position.left + pad) + 'px'
-                $('.npb-fixed-modal').css(position)
+                position['--frgef--neo-page-builder-left-value'] = ($(elmt).offset().left - position.left - wrapperLeft + pad) + 'px'
+                $('.frgef--neo-page-builder-fixed-modal').css(position)
             }
         })
     }
@@ -221,16 +225,16 @@ export default class extends Controller {
      */
     modalPosition() {
 
-        const modal = $('.npb-fixed-modal')
+        const modal = $('.frgef--neo-page-builder-fixed-modal')
         if (modal.length > 0) {
             const windowHeight = window.innerHeight
             const modalPosY = $(modal).offset().top
             const modalHeight = $(modal).height()
             if (modalPosY + modalHeight > windowHeight
             ) {
-                $(modal).addClass('npb-fixed-modal-above-target')
+                $(modal).addClass('frgef--neo-page-builder-fixed-modal-above-target')
             } else {
-                $(modal).removeClass('npb-fixed-modal-above-target')
+                $(modal).removeClass('frgef--neo-page-builder-fixed-modal-above-target')
             }
         }
     }
@@ -250,7 +254,7 @@ export default class extends Controller {
             if (status === 'success') {
                 if (container !== null) {
                     $(container).append($(data))
-                    $(this.element).find('#npb-initial-add-row-btn').addClass('npb-hide-initial-btn')
+                    $(this.element).find('#frgef--neo-page-builder-initial-add-row-btn').addClass('frgef--neo-page-builder-hide-initial-btn')
                 } else {
                     this.displayChoices(data, elmt)
                 }
